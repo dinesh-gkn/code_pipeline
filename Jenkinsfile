@@ -32,11 +32,7 @@ pipeline {
             echo 'Trigger JUNOS ZT ( Formula 1)'
             echo 'Checkout Junos PVT Branch'
             echo 'Build Junos with AFT PKG'
-            stage('ZT_Sanity') {
-              steps {
-                  echo 'Run ZT Sanity'
-              }
-            }
+            echo 'Run ZT Sanity'
           },
           "Trigger_ZH_PIpeline": {
             echo 'Trigger ARGUS ZH'
