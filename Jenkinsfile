@@ -42,5 +42,10 @@ pipeline {
         )
       }
     }
+    stage('publish_aft') {
+      steps {
+        echo 'publish AFT after validation'
+      }
+    }
   }
 }
