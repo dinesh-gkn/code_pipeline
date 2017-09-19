@@ -24,25 +24,25 @@ pipeline {
     stage('trigger_Z_pipelines') {
       steps {
         parallel(
-          "trigger_ZX_Pipeline": {
+          "ZX_Pipeline": {
             echo 'trigger EVO ZX'
             
           },
-          "trigger_ZT_Pipeline": {
+          "ZT_Pipeline": {
             echo 'Trigger JUNOS ZT ( Formula 1)'
             echo 'Checkout Junos PVT Branch'
             echo 'Build Junos with AFT PKG'
             echo 'Run ZT Sanity'
             
           },
-          "Trigger_ZH_PIpeline": {
+          "ZH_PIpeline": {
             echo 'Trigger ARGUS ZH'
             
           }
         )
       }
     }
-    stage('aft_volume_publish') {
+    stage('aft_vol_publish') {
       steps {
         echo 'publish AFT after validation'
       }
