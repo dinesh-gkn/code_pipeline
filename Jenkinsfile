@@ -1,19 +1,45 @@
 pipeline {
   agent any
   stages {
-    stage('start_ci') {
+    stage('aft_start') {
       steps {
-        echo 'starting CI'
+        echo 'starting CI for aft'
       }
     }
-    stage('body') {
+    stage('aft_checkout') {
       steps {
-        echo 'body'
+        echo 'checkout aft from evo git'
       }
     }
-    stage('end') {
+    stage('build_aft_run_gtest') {
       steps {
-        echo 'end pipeline'
+        echo 'bulding aft and run gtest'
+      }
+    }
+    stage('publish aft') {
+      steps {
+        echo 'Publishing AFT'
+      }
+    }
+    stage('trigger_ZX') {
+      steps {
+        parallel(
+          "trigger_ZX_Pipeline": {
+            echo 'trigger EVO ZX'
+            
+          },
+          "trigger ZT Pipeline": {
+            echo 'Trigger JUNOS ZT ( Formula 1)'
+            echo 'Checkout Junos PVT Branch'
+            echo 'Build Junos with AFT PKG'
+            echo 'Run ZT Sanity'
+            
+          },
+          "Trigger_ZH_PIpeline": {
+            echo 'Trigger ARGUS ZH'
+            
+          }
+        )
       }
     }
   }
