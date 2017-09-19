@@ -11,12 +11,12 @@ pipeline {
         echo 'checkout aft from evo git'
       }
     }
-    stage('build_aft_run_gtest') {
+    stage('aft_bulld_gtest') {
       steps {
         echo 'bulding aft and run gtest'
       }
     }
-    stage('sandbox_publish_aft') {
+    stage('aft_local_publish') {
       steps {
         echo 'Publishing AFT'
       }
@@ -33,6 +33,7 @@ pipeline {
             echo 'Checkout Junos PVT Branch'
             echo 'Build Junos with AFT PKG'
             echo 'Run ZT Sanity'
+            
           },
           "Trigger_ZH_PIpeline": {
             echo 'Trigger ARGUS ZH'
@@ -41,7 +42,7 @@ pipeline {
         )
       }
     }
-    stage('volume_publish_aft') {
+    stage('aft_volume_publish') {
       steps {
         echo 'publish AFT after validation'
       }
