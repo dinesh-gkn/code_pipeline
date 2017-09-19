@@ -21,19 +21,22 @@ pipeline {
         echo 'Publishing AFT'
       }
     }
-    stage('trigger_ZX') {
+    stage('trigger_Z_pipelines') {
       steps {
         parallel(
           "trigger_ZX_Pipeline": {
             echo 'trigger EVO ZX'
             
           },
-          "trigger ZT Pipeline": {
+          "trigger_ZT_Pipeline": {
             echo 'Trigger JUNOS ZT ( Formula 1)'
             echo 'Checkout Junos PVT Branch'
             echo 'Build Junos with AFT PKG'
-            echo 'Run ZT Sanity'
-            
+            stage('ZT_Sanity') {
+              steps {
+                  echo 'Run ZT Sanity'
+              }
+            }
           },
           "Trigger_ZH_PIpeline": {
             echo 'Trigger ARGUS ZH'
