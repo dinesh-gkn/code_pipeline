@@ -16,7 +16,7 @@ pipeline {
         echo 'bulding aft and run gtest'
       }
     }
-    stage('publish aft') {
+    stage('sandbox_publish_aft') {
       steps {
         echo 'Publishing AFT'
       }
@@ -42,7 +42,7 @@ pipeline {
         )
       }
     }
-    stage('publish_aft') {
+    stage('volume_publish_aft') {
       steps {
         echo 'publish AFT after validation'
       }
