@@ -21,7 +21,7 @@ pipeline {
         echo 'Publishing AFT'
       }
     }
-    stage('trigger_Z_pipelines') {
+    stage('Z*_pipelines') {
       steps {
         parallel(
           "ZX_Pipeline": {
